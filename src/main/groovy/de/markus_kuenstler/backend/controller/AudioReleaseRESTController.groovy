@@ -38,9 +38,12 @@ class AudioReleaseRESTController {
         return convertToSearchResult(searchResults)
     }
 
-    @GetMapping(value = "/findByProperties", params = ["releasedBefore", "minTrackCount"])
-    public MatchingReleases findByProperties(
-            @RequestParam("releasedBefore") String releasedBefore, @RequestParam("minTrackCount") int minTrackCount) {
+    @GetMapping(params = ["releasedBefore", "minTrackCount"])
+    public MatchingReleases getAudioReleases(
+            @RequestParam(value="releasedBefore", required = false) String releasedBefore,
+            @RequestParam(value="minTrackCount", required = false) int minTrackCount) {
+
+
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy")
 
